@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import GrandParent from './components/GrandParent';
 
 function App() {
+  const [count, setCount] = useState(0)
+
+  function increment() {
+    setCount(prevCount => prevCount + 1)
+  }
+
+  console.log("[GP] [P] [C] [GC] APP just rendered")
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <button onClick={increment}>+1</button>
+        <h2>{count}</h2>
+        <p>I'm the App component</p>
+        <GrandParent count={count} />
+        <GrandParent />
     </div>
   );
 }
